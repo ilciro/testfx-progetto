@@ -5,11 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 class TestBoundayRegistrazioneOk extends ApplicationTest {
@@ -24,13 +26,20 @@ class TestBoundayRegistrazioneOk extends ApplicationTest {
 
 	@Test
 	public void tornaLogin() {
+		Button b=(Button)GuiTest.find("#loginB");
 
 		clickOn("#loginB");
+		assertEquals(b.getText(),"Login");
 	}
 	@Test
 	public void tornaHomePage()
+
 	{
+		Button b=(Button)GuiTest.find("#homePageB");
+
 		clickOn("#homePageB");
+		assertEquals(b.getText(),"HomePage");
+
 	}
 	@Override
 	  public void start (Stage stage) throws Exception {

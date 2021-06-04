@@ -45,6 +45,7 @@ class TestBoundaryAddUSerPage extends ApplicationTest {
 		write("a");
 		clickOn("#insB");
 		sleep(1000);
+		assertNotNull(dataP.getValue());
 		
 	}
 	@Test

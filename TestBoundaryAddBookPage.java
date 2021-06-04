@@ -57,6 +57,7 @@ class TestBoundaryAddBookPage extends ApplicationTest{
 		write("5");
 		clickOn("#buttonC");		
 		sleep(2000);
+		assertNotNull(dataP.getValue());
 		
 	}
 	@Test

@@ -5,11 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import controller_app.SingeltonSystemState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 class TestBoundaryRaccoltaPage extends ApplicationTest {
@@ -24,27 +27,43 @@ class TestBoundaryRaccoltaPage extends ApplicationTest {
 
 	@Test
 	public void giornali() {
+		Button b=(Button)GuiTest.find("#buttonG");
 		clickOn("#buttonG");
 		sleep(1000);
+		assertEquals(b.getText(),"Giornali");
 	}
 	@Test
 	public void riviste()
 	{
+		Button b=(Button)GuiTest.find("#rivisteB");
+
 		clickOn("#rivisteB");
 		sleep(1000);
+		assertEquals(b.getText(),"Riviste");
+
 	}
 	@Test
 	public void libri()
 	{
+		Button b=(Button)GuiTest.find("#libriB");
+
 		clickOn("#libriB");
 		sleep(1000);
+		assertEquals(b.getText(),"Libri");
+
 	}
 
 	 @Test
 	 public void indietro()
 	 {
+		 SingeltonSystemState.getIstance().setIsLogged(false);
+			Button b=(Button)GuiTest.find("#buttonI");
+
 		clickOn("#buttonI");
 		sleep(1000);
+		assertEquals(b.getText(),"Indietro");
+
+		
 	 }
 	@Override
 	  public void start (Stage stage) throws Exception {

@@ -37,12 +37,14 @@ class TestBoundaryAcquistaLibro extends ApplicationTest {
 
 	@Test
 	public void provaCalcolo() throws SQLException {
+		Label totale=(Label)GuiTest.find("#totale");
 		
 				
 		clickOn("#quantita");
 		write("5");
 		clickOn("#calcola");
 		sleep(3000);
+		assertNotNull(totale.getText());
 	//	clickOn("#ritiroN");
 		//clickOn("#buttonCC");
 		
@@ -67,18 +69,24 @@ class TestBoundaryAcquistaLibro extends ApplicationTest {
 	@Test
 	public void pagaCC()
 	{
+		Label l=(Label)GuiTest.find("#nome");
 		RadioButton b=(RadioButton)GuiTest.find("#buttonCC");
 		b.setDisable(false);
 		clickOn("#buttonCC");
 		sleep(1000);
+		assertNotNull(l.getText());
 	}
 	@Test
 	public void pagaCash()
 	{
+		Label l=(Label)GuiTest.find("#nome");
+
 		RadioButton b=(RadioButton)GuiTest.find("#buttonCash");
 		b.setDisable(false);
 		clickOn("#buttonCash");
 		sleep(1000);
+		assertNotNull(l.getText());
+
 	}
 	
 	

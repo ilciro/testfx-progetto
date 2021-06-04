@@ -51,6 +51,7 @@ class TestBoundaryAddRivistaPage extends ApplicationTest{
 		write("10");
 		clickOn("#buttonAdd");		
 		sleep(2000);
+		assertNotNull(dataP.getValue());
 		
 	}
 	@Test

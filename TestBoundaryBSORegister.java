@@ -13,6 +13,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import users.singelton.User;
@@ -54,12 +55,15 @@ class TestBoundaryBSORegister extends ApplicationTest {
 		clickOn("#buttonReg");
 
 		sleep(2000);
+		assertNotNull(User.getInstance());
 	}
 	
 	@Test
 	public void annulla()
 	{
+		Button b=(Button)GuiTest.find("#buttonA");
 		clickOn("#buttonA");
+		assertEquals(b.getText(),"Annulla");
 	}
 
 	@Override

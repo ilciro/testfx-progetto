@@ -2,18 +2,27 @@ package testFxjava8.tetsfv8;
 
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import controller_app.ControllerCompravenditaLibri;
 import controller_app.SingeltonSystemState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 class TestBoundaryCompravenditaLibri extends ApplicationTest {
+	private ControllerCompravenditaLibri cCL=new ControllerCompravenditaLibri();
 	
 
 	@BeforeEach
@@ -28,37 +37,42 @@ class TestBoundaryCompravenditaLibri extends ApplicationTest {
 	
 	
 	@Test
-	public void popolaTabella()
+	public void popolaTabella() throws SQLException
 	{
 		clickOn("#entryText");
-		write("2");
-		SingeltonSystemState.getIstance().setId(2);
 		clickOn("#buttonL");
 		sleep(2000);
+		assertNotNull(cCL.getLibri());
+
 	}
 	@Test
 	public void mostra()
 	{
 		clickOn("#entryText");
-		System.out.println("id in test rivista mostra :"+SingeltonSystemState.getIstance().getId());
 		write("2");
 		clickOn("#buttonV");
 		sleep(2000);
+		assertNotNull(SingeltonSystemState.getIstance().getId());
+
 	}
 	@Test
 	public void procedi()
 	{
 		clickOn("#entryText");
-		System.out.println("id in test rivista procedi :"+SingeltonSystemState.getIstance().getId());
 		write("2");
 		clickOn("#buttonA");
 		sleep(2000);
+		assertNotNull(SingeltonSystemState.getIstance().getId());
+
 		
 	}
 	@Test
 	public void torna()
 	{
+		Button b=(Button)GuiTest.find("#buttonI");
 		clickOn("#buttonI");
+		assertEquals(b.getText(),"Home Page");
+
 	}
 	
 	@Override
